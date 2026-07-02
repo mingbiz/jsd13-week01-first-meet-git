@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Tags Demo</title>
+</head>
+<body>
+
+  <header>
+    <h1>HTML Tags Demo Page</h1>
+    <p>A beginner-friendly guide to commonly used HTML elements.</p>
+    <nav>
+      <ul>
+        <li><a href="#text">Text</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#media">Links &amp; Images</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#form">Form</a></li>
+        <li><a href="#aside">Aside</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="text">
+      <h2>Text Elements</h2>
+
+      <h3>Headings</h3>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+
+      <h3>Paragraphs and Formatting</h3>
+      <p>This is a standard paragraph. It contains a <strong>strong</strong> word and an <em>emphasised</em> word. You can also use <small>small text</small> and inline <code>code</code>.</p>
+      <p>Line breaks<br>are created with <code>&lt;br&gt;</code>.</p>
+      <hr>
+      <blockquote cite="https://example.com">
+        This is a blockquote. It is used to quote external sources.
+      </blockquote>
+      <pre>Preformatted text
+  preserves whitespace
+    and line breaks.</pre>
+    </section>
+
+    <section id="lists">
+      <h2>Lists</h2>
+
+      <h3>Ordered List</h3>
+      <ol>
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ol>
+
+      <h3>Unordered List</h3>
+      <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Cherries</li>
+      </ul>
+
+      <h3>Description List</h3>
+      <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets</dd>
+      </dl>
+    </section>
+
+    <section id="media">
+      <h2>Links and Images</h2>
+
+      <h3>Links</h3>
+      <p>Visit <a href="https://developer.mozilla.org">MDN Web Docs</a> for more information.</p>
+
+      <h3>Images</h3>
+      <figure>
+        <img src="https://via.placeholder.com/400x200" alt="Placeholder image showing a 400 by 200 rectangle">
+        <figcaption>A placeholder image with descriptive alt text.</figcaption>
+      </figure>
+
+      <h3>Audio</h3>
+      <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+        Your browser does not support the audio element.
+      </audio>
+
+      <h3>Video</h3>
+      <video controls width="400" src="https://www.w3schools.com/html/mov_bbb.mp4">
+        Your browser does not support the video element.
+      </video>
+    </section>
+
+    <section id="table">
+      <h2>Table</h2>
+      <table>
+        <caption>Programming Languages Comparison</caption>
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Paradigm</th>
+            <th>First appeared</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML</td>
+            <td>Markup</td>
+            <td>1993</td>
+          </tr>
+          <tr>
+            <td>CSS</td>
+            <td>Stylesheet</td>
+            <td>1996</td>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>Multi-paradigm</td>
+            <td>1995</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="form">
+      <h2>Form</h2>
+      <form>
+        <fieldset>
+          <legend>Contact Information</legend>
+
+          <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+          </p>
+
+          <p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          </p>
+
+          <p>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="40"></textarea>
+          </p>
+
+          <p>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+              <option value="">-- Select --</option>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="jp">Japan</option>
+            </select>
+          </p>
+
+          <p>
+            <button type="submit">Send</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+
+  </main>
+
+  <aside id="aside">
+    <h2>Did You Know?</h2>
+    <p>The <code>&lt;aside&gt;</code> element represents content indirectly related to the main content, such as sidebars or callout boxes.</p>
+  </aside>
+
+  <footer>
+    <p><small>Built as a learning resource for beginner web developers. &copy; 2026</small></p>
+  </footer>
+
+</body>
+</html>
