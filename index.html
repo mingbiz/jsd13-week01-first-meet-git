@@ -3,180 +3,310 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Tags Demo</title>
+  <title>Food Menu - Order Online</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f3ed;
+      color: #2d2d2d;
+    }
+    header {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 8px; }
+    header p { font-size: 1.1em; opacity: 0.9; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .menu-section { flex: 2; min-width: 300px; }
+    .order-section { flex: 1; min-width: 280px; }
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #c0392b;
+      border-bottom: 3px solid #e74c3c;
+      padding-bottom: 8px;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    .menu-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .menu-card .info {
+      padding: 15px;
+    }
+    .menu-card .info h3 { font-size: 1.2em; margin-bottom: 5px; }
+    .menu-card .info .cuisine {
+      font-size: 0.85em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .menu-card .info .price {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #e74c3c;
+      margin-bottom: 10px;
+    }
+    .menu-card .info button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-add {
+      background: #27ae60;
+      color: #fff;
+    }
+    .btn-add:hover { background: #219a52; }
+    .btn-remove {
+      background: #e74c3c;
+      color: #fff;
+    }
+    .btn-remove:hover { background: #c0392b; }
+    .btn-add:disabled, .btn-remove:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .order-panel {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 20px;
+    }
+    .order-panel h2 { margin-top: 0; }
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .order-item:last-child { border-bottom: none; }
+    .order-item .item-name { font-weight: 600; }
+    .order-item .item-qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .order-item .item-qty button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      background: #e74c3c;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .order-item .item-qty button:hover { background: #c0392b; }
+    .order-item .item-qty .qty-num { min-width: 20px; text-align: center; font-weight: 600; }
+    .order-item .item-line-total { font-weight: 600; color: #e74c3c; }
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0 5px;
+      border-top: 2px solid #e74c3c;
+      margin-top: 10px;
+      font-size: 1.4em;
+      font-weight: bold;
+    }
+    .order-total span:last-child { color: #e74c3c; }
+    .empty-cart {
+      text-align: center;
+      color: #aaa;
+      padding: 30px 0;
+      font-size: 1.1em;
+    }
+    .badge {
+      display: inline-block;
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      font-size: 0.8em;
+      margin-left: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <h1>HTML Tags Demo Page</h1>
-    <p>A beginner-friendly guide to commonly used HTML elements.</p>
-    <nav>
-      <ul>
-        <li><a href="#text">Text</a></li>
-        <li><a href="#lists">Lists</a></li>
-        <li><a href="#media">Links &amp; Images</a></li>
-        <li><a href="#table">Table</a></li>
-        <li><a href="#form">Form</a></li>
-        <li><a href="#aside">Aside</a></li>
-      </ul>
-    </nav>
+    <h1>&#127860; Gourmet Bites</h1>
+    <p>Delicious food, delivered to your doorstep</p>
   </header>
 
-  <main>
+  <div class="container">
+    <div class="menu-section">
+      <h2>&#127869; Our Menu</h2>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
 
-    <section id="text">
-      <h2>Text Elements</h2>
-
-      <h3>Headings</h3>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
-
-      <h3>Paragraphs and Formatting</h3>
-      <p>This is a standard paragraph. It contains a <strong>strong</strong> word and an <em>emphasised</em> word. You can also use <small>small text</small> and inline <code>code</code>.</p>
-      <p>Line breaks<br>are created with <code>&lt;br&gt;</code>.</p>
-      <hr>
-      <blockquote cite="https://example.com">
-        This is a blockquote. It is used to quote external sources.
-      </blockquote>
-      <pre>Preformatted text
-  preserves whitespace
-    and line breaks.</pre>
-    </section>
-
-    <section id="lists">
-      <h2>Lists</h2>
-
-      <h3>Ordered List</h3>
-      <ol>
-        <li>First item</li>
-        <li>Second item</li>
-        <li>Third item</li>
-      </ol>
-
-      <h3>Unordered List</h3>
-      <ul>
-        <li>Apples</li>
-        <li>Bananas</li>
-        <li>Cherries</li>
-      </ul>
-
-      <h3>Description List</h3>
-      <dl>
-        <dt>HTML</dt>
-        <dd>HyperText Markup Language</dd>
-        <dt>CSS</dt>
-        <dd>Cascading Style Sheets</dd>
-      </dl>
-    </section>
-
-    <section id="media">
-      <h2>Links and Images</h2>
-
-      <h3>Links</h3>
-      <p>Visit <a href="https://developer.mozilla.org">MDN Web Docs</a> for more information.</p>
-
-      <h3>Images</h3>
-      <figure>
-        <img src="https://via.placeholder.com/400x200" alt="Placeholder image showing a 400 by 200 rectangle">
-        <figcaption>A placeholder image with descriptive alt text.</figcaption>
-      </figure>
-
-      <h3>Audio</h3>
-      <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-        Your browser does not support the audio element.
-      </audio>
-
-      <h3>Video</h3>
-      <video controls width="400" src="https://www.w3schools.com/html/mov_bbb.mp4">
-        Your browser does not support the video element.
-      </video>
-    </section>
-
-    <section id="table">
-      <h2>Table</h2>
-      <table>
-        <caption>Programming Languages Comparison</caption>
-        <thead>
-          <tr>
-            <th>Language</th>
-            <th>Paradigm</th>
-            <th>First appeared</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>HTML</td>
-            <td>Markup</td>
-            <td>1993</td>
-          </tr>
-          <tr>
-            <td>CSS</td>
-            <td>Stylesheet</td>
-            <td>1996</td>
-          </tr>
-          <tr>
-            <td>JavaScript</td>
-            <td>Multi-paradigm</td>
-            <td>1995</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section id="form">
-      <h2>Form</h2>
-      <form>
-        <fieldset>
-          <legend>Contact Information</legend>
-
-          <p>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-          </p>
-
-          <p>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-          </p>
-
-          <p>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="4" cols="40"></textarea>
-          </p>
-
-          <p>
-            <label for="country">Country:</label>
-            <select id="country" name="country">
-              <option value="">-- Select --</option>
-              <option value="us">United States</option>
-              <option value="uk">United Kingdom</option>
-              <option value="jp">Japan</option>
-            </select>
-          </p>
-
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </fieldset>
-      </form>
-    </section>
-
-  </main>
-
-  <aside id="aside">
-    <h2>Did You Know?</h2>
-    <p>The <code>&lt;aside&gt;</code> element represents content indirectly related to the main content, such as sidebars or callout boxes.</p>
-  </aside>
+    <div class="order-section">
+      <div class="order-panel">
+        <h2>&#128722; Your Order <span class="badge" id="itemCount">0</span></h2>
+        <div id="orderList">
+          <div class="empty-cart">Your cart is empty</div>
+        </div>
+        <div class="order-total">
+          <span>Total</span>
+          <span id="totalPrice">$0.00</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    <p><small>Built as a learning resource for beginner web developers. &copy; 2026</small></p>
+    <p>&copy; 2026 Gourmet Bites. Made with &#10084;.</p>
   </footer>
 
+  <script src="my-object.js"></script>
+  <script>
+    const prices = {
+      Pizza: 12.99,
+      Malatang: 14.99,
+      Burger: 10.99,
+      Sushi: 18.99,
+      Madovik: 8.99
+    };
+
+    const images = {
+      Pizza: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
+      Malatang: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
+      Burger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop',
+      Sushi: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&h=300&fit=crop',
+      Madovik: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop'
+    };
+
+    let cart = {};
+
+    function renderMenu() {
+      const grid = document.getElementById('menuGrid');
+      grid.innerHTML = '';
+      foodDatabase.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.id = 'card-' + item.id;
+        const price = prices[item.name] || 0;
+        const imgSrc = images[item.name] || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop';
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="${item.name}" loading="lazy">
+          <div class="info">
+            <h3>${item.name}</h3>
+            <div class="cuisine">&#127758; ${item.cuisine} | ${item.origin}</div>
+            <div class="price">$${price.toFixed(2)}</div>
+            <button class="btn-add" data-id="${item.id}" data-name="${item.name}">Add to Order</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      document.querySelectorAll('.btn-add').forEach(btn => {
+        btn.addEventListener('click', function() {
+          addToCart(parseInt(this.dataset.id), this.dataset.name);
+        });
+      });
+    }
+
+    function addToCart(id, name) {
+      if (!cart[id]) cart[id] = { name, qty: 0 };
+      cart[id].qty++;
+      updateUI();
+    }
+
+    function removeOne(id) {
+      if (cart[id]) {
+        cart[id].qty--;
+        if (cart[id].qty <= 0) delete cart[id];
+      }
+      updateUI();
+    }
+
+    function removeAll(id) {
+      delete cart[id];
+      updateUI();
+    }
+
+    function updateUI() {
+      const list = document.getElementById('orderList');
+      const totalSpan = document.getElementById('totalPrice');
+      const badge = document.getElementById('itemCount');
+      let total = 0;
+      let count = 0;
+      let html = '';
+      const ids = Object.keys(cart);
+      if (ids.length === 0) {
+        html = '<div class="empty-cart">Your cart is empty</div>';
+      } else {
+        ids.forEach(id => {
+          const item = cart[id];
+          const price = prices[item.name] || 0;
+          const lineTotal = price * item.qty;
+          total += lineTotal;
+          count += item.qty;
+          html += `
+            <div class="order-item">
+              <div>
+                <div class="item-name">${item.name}</div>
+                <div style="font-size:0.85em;color:#888;">$${price.toFixed(2)} each</div>
+              </div>
+              <div class="item-qty">
+                <button onclick="removeOne(${id})">-</button>
+                <span class="qty-num">${item.qty}</span>
+                <button onclick="addToCart(${id}, '${item.name}')">+</button>
+              </div>
+              <div class="item-line-total">$${lineTotal.toFixed(2)}</div>
+            </div>
+          `;
+        });
+      }
+      list.innerHTML = html;
+      totalSpan.textContent = '$' + total.toFixed(2);
+      badge.textContent = count;
+    }
+
+    renderMenu();
+  </script>
 </body>
 </html>
-
-
